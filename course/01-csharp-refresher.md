@@ -189,29 +189,199 @@ Console.WriteLine(login.Title());
 
 ---
 
-## Day 7: Collections
+## Day 7: Arrays and Collections
 
-`List<T>` holds an ordered list. `Dictionary<TKey, TValue>` maps keys to values.
+A collection holds several values. In test automation you use them constantly: a list of usernames to test, a dictionary of expected error messages, a set of visible product names. Interviewers ask about these often, so this day goes deeper than the others.
+
+### Part A: Arrays
+
+An array has a **fixed size**. Once created, its length doesn't change. Index starts at `0`.
+
+```csharp
+// Declare with a size: all values start at their default (0, null, false)
+int[] scores = new int[3];
+scores[0] = 90;
+scores[1] = 75;
+scores[2] = 88;
+
+// Declare with values
+string[] users = { "standard_user", "problem_user", "locked_out_user" };
+
+Console.WriteLine(users[0]);        // standard_user
+Console.WriteLine(users[^1]);       // locked_out_user (^1 = last item)
+Console.WriteLine(users.Length);    // 3
+```
+
+**Common array operations:**
+
+```csharp
+int[] numbers = { 5, 2, 9, 1 };
+
+Array.Sort(numbers);                       // numbers is now 1, 2, 5, 9
+Array.Reverse(numbers);                    // 9, 5, 2, 1
+int index = Array.IndexOf(numbers, 5);     // 1
+bool has9 = Array.Exists(numbers, n => n == 9);
+int[] copy = (int[])numbers.Clone();       // a separate copy
+```
+
+**Multidimensional and jagged arrays** (interviews like to ask the difference):
+
+```csharp
+// Multidimensional: a fixed rectangle (2 rows, 3 columns)
+int[,] grid = new int[2, 3];
+grid[1, 2] = 7;
+
+// Jagged: an array of arrays, each row can have a different length
+int[][] rows =
+{
+    new[] { 1, 2 },
+    new[] { 3, 4, 5 },
+};
+Console.WriteLine(rows[1][2]);   // 5
+```
+
+**Pitfall:** reading past the end throws an exception.
+
+```csharp
+string[] users = { "a", "b" };
+Console.WriteLine(users[2]);   // IndexOutOfRangeException
+```
+
+**Exercise:** create an array of the four saucedemo usernames (`standard_user`, `locked_out_user`, `problem_user`, `performance_glitch_user`). Print each one using a `for` loop with an index, then print the last one using `^1`.
+
+**Check:** you see four lines, then the last username again.
+
+### Part B: `List<T>`
+
+A `List<T>` is an array that grows and shrinks. It's the collection you'll use most.
 
 ```csharp
 var usernames = new List<string> { "standard_user", "problem_user" };
-usernames.Add("performance_glitch_user");
 
+usernames.Add("performance_glitch_user");     // add to end
+usernames.Insert(0, "locked_out_user");       // add at index 0
+usernames.Remove("problem_user");             // remove first match, returns true/false
+usernames.RemoveAt(0);                        // remove by index
+
+Console.WriteLine(usernames.Count);                 // 2 (use Count, not Length)
+Console.WriteLine(usernames.Contains("standard_user")); // True
+Console.WriteLine(usernames[0]);                    // first item
+```
+
+**Filtering and transforming with LINQ** (you'll use these in tests all the time):
+
+```csharp
+var all = new List<string> { "standard_user", "locked_out_user", "problem_user" };
+
+var customers = all.Where(u => u.EndsWith("_user")).ToList();
+var upper = all.Select(u => u.ToUpper()).ToList();
+bool anyLocked = all.Any(u => u.Contains("locked"));
+int count = all.Count(u => u.Contains("user"));
+string first = all.First(u => u.StartsWith("p"));   // "problem_user"
+```
+
+- `Where` filters.
+- `Select` transforms each item.
+- `Any` checks if at least one item matches.
+- `First` returns the first match, and throws if there is none. `FirstOrDefault` returns `null` instead.
+
+**Exercise:** start with a list of six usernames. Use LINQ to print only the ones that contain `"user"`, and only the count of ones that contain `"locked"`.
+
+**Check:** you can explain why `Count` is a property and `Length` is an array property.
+
+### Part C: `Dictionary<TKey, TValue>`
+
+A dictionary maps a unique key to a value. Lookups by key are very fast, so dictionaries are ideal for "find the password for this user."
+
+```csharp
 var passwords = new Dictionary<string, string>
 {
     ["standard_user"] = "secret_sauce",
     ["problem_user"] = "secret_sauce",
 };
 
-foreach (var name in usernames)
+passwords["locked_out_user"] = "secret_sauce";    // add or update
+
+// Safe lookup: avoid KeyNotFoundException
+if (passwords.TryGetValue("ghost_user", out var pw))
 {
-    Console.WriteLine($"{name} -> {passwords[name]}");
+    Console.WriteLine(pw);
+}
+else
+{
+    Console.WriteLine("No such user");
+}
+
+Console.WriteLine(passwords.ContainsKey("standard_user"));   // True
+
+foreach (var (user, password) in passwords)
+{
+    Console.WriteLine($"{user} -> {password}");
 }
 ```
 
-**Exercise:** add `locked_out_user` to both collections, then look up its password.
+**Pitfall:** `passwords["ghost_user"]` throws `KeyNotFoundException`. Use `TryGetValue` when the key might be missing.
 
-**Check:** the printed password is `secret_sauce`.
+**Exercise:** write a dictionary of three users to their expected error messages. Use `TryGetValue` to look up a fourth user that doesn't exist, and print `"No such user"`.
+
+**Check:** the program doesn't crash on the missing key.
+
+### Part D: `HashSet<T>`, `Queue<T>`, and `Stack<T>`
+
+```csharp
+// HashSet: unique values only, fast Contains
+var seen = new HashSet<string>();
+Console.WriteLine(seen.Add("standard_user"));   // True
+Console.WriteLine(seen.Add("standard_user"));   // False: already there
+
+// Queue: first in, first out
+var queue = new Queue<string>();
+queue.Enqueue("step 1");
+queue.Enqueue("step 2");
+Console.WriteLine(queue.Dequeue());              // step 1
+
+// Stack: last in, first out
+var stack = new Stack<string>();
+stack.Push("page A");
+stack.Push("page B");
+Console.WriteLine(stack.Pop());                  // page B (like browser "back")
+```
+
+**Exercise:** use a `Stack<string>` to simulate navigating three pages, then going back twice. Print each page you return to.
+
+**Check:** the order is last-in, first-out.
+
+### Part E: Choosing a collection and returning one from a method
+
+| Need | Use |
+|---|---|
+| Fixed size, known at creation | Array |
+| Growing ordered list | `List<T>` |
+| Look up by key | `Dictionary<TKey, TValue>` |
+| Unique items, fast membership check | `HashSet<T>` |
+| First in, first out | `Queue<T>` |
+| Last in, first out | `Stack<T>` |
+
+When a method returns a collection, return the most general type that works, usually `IEnumerable<T>` or `IReadOnlyList<T>`. This stops callers from changing your internal data.
+
+```csharp
+public IReadOnlyList<string> GetUsers() => _users;   // callers can read, not add
+```
+
+### Part F: Interview questions
+
+Try to answer these in your own words before checking the answers in your notes:
+
+1. **Array vs `List<T>`?** Arrays have a fixed size. `List<T>` grows. Use arrays when the size is known and won't change.
+2. **Why is `Dictionary` lookup fast?** It uses a hash of the key to jump straight to the value, roughly O(1), instead of checking each item.
+3. **What's the difference between `Count` and `Length`?** `Count` is on collections like `List`. `Length` is on arrays.
+4. **What happens if you add a duplicate key to a `Dictionary`?** Using `Add` throws `ArgumentException`. Using the indexer `[key] = value` overwrites.
+5. **`HashSet` vs `List` for checking membership?** `HashSet.Contains` is roughly O(1). `List.Contains` scans every item, roughly O(n).
+6. **`First` vs `FirstOrDefault`?** `First` throws when there is no match. `FirstOrDefault` returns the default value (usually `null`).
+
+**Checkpoint:** write a small console app that stores users in a `Dictionary<string, string>`, filters them with LINQ, and shows a `Stack` of visited pages. Explain each collection choice in a comment.
+
+**Done when:** it runs and you can answer all six questions without looking.
 
 ---
 

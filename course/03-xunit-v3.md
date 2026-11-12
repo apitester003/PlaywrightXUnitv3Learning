@@ -1,10 +1,10 @@
-# Part 3: xUnit v3 (Days 25–34)
+# Part 3: xUnit v3 (Days 28–37)
 
 xUnit runs your tests. It finds methods marked with attributes, runs them, and reports results. This repo uses xUnit v3 (`xunit.v3` 3.2.2), which is what `Tests/LoginTests.cs` relies on.
 
 ---
 
-## Day 25: Facts and Assertions
+## Day 28: Facts and Assertions
 
 A `[Fact]` is a test with no inputs. Inside it, use `Assert` to check results.
 
@@ -37,7 +37,7 @@ Naming tests as `Method_Scenario_Expected` makes failures easy to read.
 
 ---
 
-## Day 26: Theories and InlineData
+## Day 29: Theories and InlineData
 
 A `[Theory]` runs one test with several inputs. `[InlineData]` supplies each set.
 
@@ -60,7 +60,7 @@ Each `InlineData` line is a separate test in the results.
 
 ---
 
-## Day 27: MemberData
+## Day 30: MemberData
 
 For more complex data (like objects), use `[MemberData]`. It points to a static method that returns the test data.
 
@@ -86,7 +86,7 @@ public void Credentials_AreNotEmpty(string user, string password)
 
 ---
 
-## Day 28: Setup and Cleanup with IAsyncLifetime
+## Day 31: Setup and Cleanup with IAsyncLifetime
 
 `IAsyncLifetime` gives a test class two methods: `InitializeAsync` runs before each test, and `DisposeAsync` runs after. Use them for browser setup and teardown.
 
@@ -123,7 +123,7 @@ You'll see `Setup`, `Test 1`, `Teardown`, then `Setup`, `Test 2`, `Teardown`. Ea
 
 ---
 
-## Day 29: Class Fixtures
+## Day 32: Class Fixtures
 
 `IClassFixture<T>` creates one shared object for all tests in a class. Use it for expensive setup, such as starting a browser once for many tests.
 
@@ -157,7 +157,7 @@ Test order isn't guaranteed, so the second test may run first. Write tests that 
 
 ---
 
-## Day 30: Skip and Traits
+## Day 33: Skip and Traits
 
 Use `Skip` to temporarily disable a test with a reason. Use `[Trait]` to group tests.
 
@@ -176,7 +176,7 @@ public void QuickCheck() => Assert.True(true);
 
 ---
 
-## Day 31: Running Some Tests
+## Day 34: Running Some Tests
 
 Run everything with `dotnet test`. Narrow it with `--filter`:
 
@@ -193,7 +193,7 @@ dotnet test --filter "FullyQualifiedName~Calculator"
 
 ---
 
-## Day 32: Test Output
+## Day 35: Test Output
 
 `ITestOutputHelper` writes messages that show up in the test output, without cluttering the console.
 
@@ -219,9 +219,9 @@ public class OutputTests
 
 ---
 
-## Day 33: Review
+## Day 36: Review
 
-Re-type the Day 26 theory and the Day 28 lifecycle demo without looking.
+Re-type the Day 29 theory and the Day 31 lifecycle demo without looking.
 
 **Quick quiz (answer in your notes):**
 1. What's the difference between `[Fact]` and `[Theory]`?
@@ -230,7 +230,7 @@ Re-type the Day 26 theory and the Day 28 lifecycle demo without looking.
 
 ---
 
-## Day 34: Checkpoint 3
+## Day 37: Checkpoint 3
 
 Create `Tests/LoginDataTests.cs`. Add a `[Theory]` with `[MemberData]` that logs in with three credential sets from the list below. Use `IAsyncLifetime` for browser setup, and reuse the browser setup from `Core/BaseTest.cs`.
 

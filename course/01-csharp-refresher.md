@@ -1,4 +1,4 @@
-# Part 1: C# Refresher (Days 1–12)
+# Part 1: C# Refresher (Days 1–15)
 
 You know basic C#. This part fills the gaps you need for test automation: methods, classes, interfaces, `async`/`await`, and dependency injection. Every day has a small example you can run.
 
@@ -189,7 +189,7 @@ Console.WriteLine(login.Title());
 
 ---
 
-## Day 7: Arrays and Collections
+## Day 7: Arrays
 
 A collection holds several values. In test automation you use them constantly: a list of usernames to test, a dictionary of expected error messages, a set of visible product names. Interviewers ask about these often, so this day goes deeper than the others.
 
@@ -251,7 +251,11 @@ Console.WriteLine(users[2]);   // IndexOutOfRangeException
 
 **Check:** you see four lines, then the last username again.
 
-### Part B: `List<T>`
+---
+
+## Day 8: `List<T>` and LINQ
+
+### `List<T>`
 
 A `List<T>` is an array that grows and shrinks. It's the collection you'll use most.
 
@@ -289,7 +293,11 @@ string first = all.First(u => u.StartsWith("p"));   // "problem_user"
 
 **Check:** you can explain why `Count` is a property and `Length` is an array property.
 
-### Part C: `Dictionary<TKey, TValue>`
+---
+
+## Day 9: Dictionary, HashSet, Queue, and Stack
+
+### `Dictionary<TKey, TValue>`
 
 A dictionary maps a unique key to a value. Lookups by key are very fast, so dictionaries are ideal for "find the password for this user."
 
@@ -326,7 +334,7 @@ foreach (var (user, password) in passwords)
 
 **Check:** the program doesn't crash on the missing key.
 
-### Part D: `HashSet<T>`, `Queue<T>`, and `Stack<T>`
+### `HashSet<T>`, `Queue<T>`, and `Stack<T>`
 
 ```csharp
 // HashSet: unique values only, fast Contains
@@ -351,7 +359,11 @@ Console.WriteLine(stack.Pop());                  // page B (like browser "back")
 
 **Check:** the order is last-in, first-out.
 
-### Part E: Choosing a collection and returning one from a method
+---
+
+## Day 10: Choosing Collections and Interview Questions
+
+### Choosing a collection and returning one from a method
 
 | Need | Use |
 |---|---|
@@ -368,7 +380,7 @@ When a method returns a collection, return the most general type that works, usu
 public IReadOnlyList<string> GetUsers() => _users;   // callers can read, not add
 ```
 
-### Part F: Interview questions
+### Interview questions
 
 Try to answer these in your own words before checking the answers in your notes:
 
@@ -385,7 +397,7 @@ Try to answer these in your own words before checking the answers in your notes:
 
 ---
 
-## Day 8: async and await
+## Day 11: async and await
 
 `async` methods run without blocking. `await` pauses the method until a `Task` finishes. Browser calls in Playwright are all `async`.
 
@@ -408,7 +420,7 @@ await LoadAsync();
 
 ---
 
-## Day 9: Nullable Reference Types
+## Day 12: Nullable Reference Types
 
 With `<Nullable>enable</Nullable>` (set in your `.csproj`), `string` can't be null, but `string?` can. The compiler warns you if you use a nullable value unsafely.
 
@@ -431,7 +443,7 @@ Console.WriteLine(maybe?.Length);   // null-conditional
 
 ---
 
-## Day 10: Dependency Injection
+## Day 13: Dependency Injection
 
 Instead of creating dependencies inside a class, you pass them in. A container builds the object graph for you.
 
@@ -456,7 +468,7 @@ You'll need to add the package: `dotnet add package Microsoft.Extensions.Depende
 
 ---
 
-## Day 11: Exceptions
+## Day 14: Exceptions
 
 Use `try` to run code that might fail, `catch` to handle a specific error, and `finally` to run cleanup no matter what.
 
@@ -489,9 +501,9 @@ finally
 
 ---
 
-## Day 12: Review and Checkpoint 1
+## Day 15: Review and Checkpoint 1
 
-Re-type Days 4, 5, 8, and 10 without looking at the examples. Then:
+Re-type Days 4, 5, 11, and 13 without looking at the examples. Then:
 
 **Checkpoint 1 project:** in `CSharpPractice`, build:
 - a `User` class with `Username` and `Password`

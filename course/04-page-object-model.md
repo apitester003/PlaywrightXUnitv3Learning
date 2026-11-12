@@ -1,10 +1,10 @@
-# Part 4: Page Object Model (Days 35–44)
+# Part 4: Page Object Model (Days 38–47)
 
 The Page Object Model (POM) puts each page's locators and actions in one class. Tests call those actions and never touch selectors. When the site changes, you fix one class instead of many tests.
 
 ---
 
-## Day 35: The Problem POM Solves
+## Day 38: The Problem POM Solves
 
 Without POM, a test mixes selectors and logic:
 
@@ -29,7 +29,7 @@ await loginPage.ClickLoginButton();
 
 ---
 
-## Day 36: Keeping Locators Private
+## Day 39: Keeping Locators Private
 
 Locators go in a `protected` property, so only the page class and its subclasses can use them.
 
@@ -55,7 +55,7 @@ public class LoginPage
 
 ---
 
-## Day 37: Base Page Classes
+## Day 40: Base Page Classes
 
 Shared code goes in a base class. The repo's `BasePageSimple` holds the page object, the URL, and the `GoTo` method.
 
@@ -81,7 +81,7 @@ public abstract class BasePageSimple : IBasePage
 
 ---
 
-## Day 38: Interfaces for Pages
+## Day 41: Interfaces for Pages
 
 The repo's `ILoginPage` lists what the login page can do. Flows depend on the interface, not the class, so you can swap in a fake page later.
 
@@ -108,7 +108,7 @@ public async Task<string> GetErrorMessage()
 
 ---
 
-## Day 39: Methods That Return Pages
+## Day 42: Methods That Return Pages
 
 When a click leads to a new page, return that page's object. The test can then keep going on the new page.
 
@@ -135,7 +135,7 @@ public async Task<InventoryPage> ClickLoginAndGoToInventory()
 
 ---
 
-## Day 40: Checking That You're on the Right Page
+## Day 43: Checking That You're on the Right Page
 
 Each page class should have a method that confirms it loaded.
 
@@ -152,7 +152,7 @@ public async Task<bool> IsLoaded()
 
 ---
 
-## Day 41: Keep Assertions Out of Page Classes
+## Day 44: Keep Assertions Out of Page Classes
 
 Pages perform actions and read state. Tests make assertions. This keeps pages reusable.
 
@@ -171,7 +171,7 @@ Assert.Contains("Username is required", error);
 
 ---
 
-## Day 42: Naming
+## Day 45: Naming
 
 Name page classes after the screen (`LoginPage`, `InventoryPage`). Name methods after what a user does (`EnterUsername`, `AddToCart`).
 
@@ -183,13 +183,13 @@ Bad: `DoStuff()`, `Click1()`. Good: `ClickLoginButton()`, `AddItemToCart()`.
 
 ---
 
-## Day 43: Review
+## Day 46: Review
 
-Re-type the `InventoryPage` example from Day 39 without looking. Then explain in your own words why tests call `loginPage.EnterUsername` instead of using `Page.Locator`.
+Re-type the `InventoryPage` example from Day 42 without looking. Then explain in your own words why tests call `loginPage.EnterUsername` instead of using `Page.Locator`.
 
 ---
 
-## Day 44: Checkpoint 4
+## Day 47: Checkpoint 4
 
 Build a POM for the saucedemo inventory page:
 

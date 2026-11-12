@@ -1,10 +1,10 @@
-# Part 5: Flows and Dependency Injection (Days 45–50)
+# Part 5: Flows and Dependency Injection (Days 48–53)
 
 A **flow** combines several page actions into one business step, such as "log in." Tests call flows, so they read like requirements. Flows get their pages through **dependency injection (DI)**, which keeps them easy to test.
 
 ---
 
-## Day 45: What a Flow Is
+## Day 48: What a Flow Is
 
 Look at the repo's `Flows/LoginFlow.cs`:
 
@@ -26,7 +26,7 @@ The flow knows the steps. The page knows the selectors. The test knows only the 
 
 ---
 
-## Day 46: Constructor Injection
+## Day 49: Constructor Injection
 
 A class gets its dependencies through its constructor, not by creating them itself.
 
@@ -50,7 +50,7 @@ Without injection, `LoginFlow` would create its own `LoginPage`, which needs a r
 
 ---
 
-## Day 47: Registering Services
+## Day 50: Registering Services
 
 `ServiceCollection` decides how long each object lives:
 
@@ -72,7 +72,7 @@ services.AddScoped<ILoginFlow, LoginFlow>();
 
 ---
 
-## Day 48: Using Flows in Tests
+## Day 51: Using Flows in Tests
 
 Tests call the flow, then check the result:
 
@@ -87,13 +87,13 @@ public async Task Login_WithValidCredentials_ShowsInventory()
 }
 ```
 
-**Exercise:** write a second test with `locked_out_user` and assert that the error appears. (Hint: the flow doesn't return the error yet. You'll add that on Day 49.)
+**Exercise:** write a second test with `locked_out_user` and assert that the error appears. (Hint: the flow doesn't return the error yet. You'll add that on Day 52.)
 
 **Check:** the test runs and you can see the browser try the login.
 
 ---
 
-## Day 49: Returning Results From a Flow
+## Day 52: Returning Results From a Flow
 
 A flow can return data, so tests can check outcomes without reaching into pages.
 
@@ -115,7 +115,7 @@ public async Task<string> LoginAndGetError(string username, string password)
 
 ---
 
-## Day 50: Review and Checkpoint 5
+## Day 53: Review and Checkpoint 5
 
 Read `Flows/LoginFlow.cs` and `Tests/LoginTests.cs` together. Explain in your notes how the test gets its `ILoginFlow`.
 

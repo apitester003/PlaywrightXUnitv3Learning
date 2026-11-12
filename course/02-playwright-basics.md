@@ -1,4 +1,4 @@
-# Part 2: Playwright Basics (Days 13–24)
+# Part 2: Playwright Basics (Days 16–27)
 
 Playwright drives a real browser from C# code. You'll open pages, find elements, type, click, and check results. Every example here runs against https://www.saucedemo.com, a practice site used by this repo.
 
@@ -6,7 +6,7 @@ Playwright drives a real browser from C# code. You'll open pages, find elements,
 
 ---
 
-## Day 13: What Playwright Is
+## Day 16: What Playwright Is
 
 Playwright has three main objects:
 
@@ -22,7 +22,7 @@ Browser code is slow, so Playwright waits for elements automatically. You rarely
 
 ---
 
-## Day 14: Launching a Browser
+## Day 17: Launching a Browser
 
 The minimal script, which you can run from a test or a console app (add the package with `dotnet add package Microsoft.Playwright`):
 
@@ -47,7 +47,7 @@ Console.WriteLine("Browser opened.");
 
 ---
 
-## Day 15: Navigation and Page Title
+## Day 18: Navigation and Page Title
 
 `GotoAsync` opens a URL and waits for the page to load. `TitleAsync` returns the page title.
 
@@ -65,7 +65,7 @@ Console.WriteLine($"Title: {title}");
 
 ---
 
-## Day 16: Locators
+## Day 19: Locators
 
 A locator points at an element. It doesn't find the element right away. Playwright looks it up each time you use it, which is why locators are reliable.
 
@@ -99,7 +99,7 @@ var field = page.GetByTestId("username");
 
 ---
 
-## Day 17: Typing and Clicking
+## Day 20: Typing and Clicking
 
 `FillAsync` clears an input and types text. `ClickAsync` clicks an element.
 
@@ -118,7 +118,7 @@ Console.WriteLine("Logged in.");
 
 ---
 
-## Day 18: Reading Text
+## Day 21: Reading Text
 
 `TextContentAsync` returns the element's text. `InnerTextAsync` returns the visible text. Use `TextContentAsync` for hidden elements.
 
@@ -136,7 +136,7 @@ Console.WriteLine(error);
 
 ---
 
-## Day 19: Assertions with Expect
+## Day 22: Assertions with Expect
 
 `Assertions.Expect` checks a condition and retries until it passes or times out. Prefer it over comparing text yourself, because it waits for the page to update.
 
@@ -162,7 +162,7 @@ Common checks:
 
 ---
 
-## Day 20: Waiting Correctly
+## Day 23: Waiting Correctly
 
 Playwright waits for elements to be ready before clicking or typing. Avoid `Task.Delay` in test code, because it makes tests slow and flaky. Wait for a condition instead:
 
@@ -180,7 +180,7 @@ await Assertions.Expect(page.Locator(".inventory_list"))   // wait for an elemen
 
 ---
 
-## Day 21: Dropdowns and Checkboxes
+## Day 24: Dropdowns and Checkboxes
 
 ```csharp
 await page.GotoAsync("https://the-internet.herokuapp.com/dropdown");
@@ -200,7 +200,7 @@ await box.CheckAsync();
 
 ---
 
-## Day 22: Screenshots
+## Day 25: Screenshots
 
 Screenshots help you debug failing tests.
 
@@ -215,11 +215,11 @@ await page.ScreenshotAsync(new PageScreenshotOptions { Path = "login.png" });
 
 ---
 
-## Day 23: Headless vs Headed
+## Day 26: Headless vs Headed
 
 `Headless = false` shows the browser window. `Headless = true` runs without one, which CI agents need.
 
-In the repo, `Core/BaseTest.cs` sets `Headless = false`. Later you'll make this configurable with an environment variable (Day 59). For now, try both:
+In the repo, `Core/BaseTest.cs` sets `Headless = false`. Later you'll make this configurable with an environment variable (Day 62). For now, try both:
 
 ```csharp
 Headless = true   // run once, check that tests still pass
@@ -232,9 +232,9 @@ Headless = false  // back to visible for learning
 
 ---
 
-## Day 24: Review and Checkpoint 2
+## Day 27: Review and Checkpoint 2
 
-Re-type the Day 16, 17, and 19 examples without looking.
+Re-type the Day 19, 20, and 22 examples without looking.
 
 **Checkpoint 2 project:** in the repo, add three tests in `Tests/`, each using `Expect` for assertions:
 1. Valid login reaches the inventory page.

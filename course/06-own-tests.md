@@ -1,10 +1,10 @@
-# Part 6: Your Own Tests (Days 51–55)
+# Part 6: Your Own Tests (Days 54–58)
 
 Now you'll write tests without step-by-step instructions. Each day gives a goal and a hint. Use what you learned in Parts 1–5.
 
 ---
 
-## Day 51: Negative Login Tests
+## Day 54: Negative Login Tests
 
 A negative test checks that the system rejects bad input. Write three tests in `Tests/LoginNegativeTests.cs`:
 
@@ -14,13 +14,13 @@ A negative test checks that the system rejects bad input. Write three tests in `
 | Empty username | `""` | `secret_sauce` | `"Username is required"` |
 | Locked-out user | `locked_out_user` | `secret_sauce` | `"locked out"` |
 
-**Hint:** use `ILoginFlow.LoginAndGetError` from Day 49.
+**Hint:** use `ILoginFlow.LoginAndGetError` from Day 52.
 
 **Done when:** all three pass.
 
 ---
 
-## Day 52: Data-Driven Negative Tests
+## Day 55: Data-Driven Negative Tests
 
 Combine the three cases into one `[Theory]` with `[MemberData]`:
 
@@ -45,7 +45,7 @@ public async Task Login_WithBadInput_ShowsError(string user, string password, st
 
 ---
 
-## Day 53: Smoke Tests
+## Day 56: Smoke Tests
 
 A smoke test is a short check that the app basically works. Tag your valid-login test:
 
@@ -68,7 +68,7 @@ dotnet test --filter "Category=Smoke"
 
 ---
 
-## Day 54: Remove Duplicate Setup
+## Day 57: Remove Duplicate Setup
 
 If several tests build the same services or log in the same way, move the shared code into `BaseTest` or a flow.
 
@@ -80,11 +80,11 @@ Before: every test has its own `ServiceCollection` setup. After: the setup lives
 
 ---
 
-## Day 55: Checkpoint 6
+## Day 58: Checkpoint 6
 
 Write a suite with at least six tests:
 - three positive tests (valid login, inventory loads, cart count is 1)
-- three negative tests (from Day 51)
+- three negative tests (from Day 54)
 
 All tests use the POM and flows. None use `Page.Locator` directly.
 

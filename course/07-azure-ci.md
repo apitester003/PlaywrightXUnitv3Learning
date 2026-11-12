@@ -1,10 +1,10 @@
-# Part 7: Azure CI (Days 56–60)
+# Part 7: Azure CI (Days 59–63)
 
 Continuous integration (CI) runs your tests automatically when you push code. Azure Pipelines runs them on a Microsoft-hosted machine and shows the results.
 
 ---
 
-## Day 56: Azure DevOps Setup
+## Day 59: Azure DevOps Setup
 
 1. Go to https://dev.azure.com and sign in with a Microsoft account. Create it if you don't have one.
 2. Create an **organization**. This holds your projects.
@@ -19,7 +19,7 @@ Azure DevOps offers a free tier. Check https://azure.microsoft.com/pricing/detai
 
 ---
 
-## Day 57: Your First Pipeline
+## Day 60: Your First Pipeline
 
 A pipeline is defined in `azure-pipelines.yml` at the repo root. Replace the starter template with:
 
@@ -48,7 +48,7 @@ Save and run it. The `trigger` line starts the pipeline on every push to `main`.
 
 ---
 
-## Day 58: Installing Browsers on the Agent
+## Day 61: Installing Browsers on the Agent
 
 CI machines don't have Playwright browsers. Install them in a step. The script is built into the output folder by the Playwright package:
 
@@ -67,7 +67,7 @@ CI machines don't have Playwright browsers. Install them in a step. The script i
 
 ---
 
-## Day 59: Headless Mode for CI
+## Day 62: Headless Mode for CI
 
 CI has no screen, so tests must run headless. Make `Core/BaseTest.cs` read an environment variable instead of hard-coding `Headless = false`:
 
@@ -98,7 +98,7 @@ Add the test step:
 
 ---
 
-## Day 60: Publishing Test Results and Checkpoint 7
+## Day 63: Publishing Test Results and Checkpoint 7
 
 Add this step so the results show in the **Tests** tab:
 

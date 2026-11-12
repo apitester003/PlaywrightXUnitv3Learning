@@ -1,4 +1,4 @@
-# 60-Day Course: C# + Playwright + xUnit v3 + Azure CI
+# 63-Day Course: C# + Playwright + xUnit v3 + Azure CI
 
 A step-by-step tutorial. Each day teaches one concept with working code, then gives an exercise. Work through it in order, about 1 hour a day.
 
@@ -19,7 +19,7 @@ A step-by-step tutorial. Each day teaches one concept with working code, then gi
    pwsh bin/Debug/net10.0/playwright.ps1 install chromium
    ```
 5. Run the existing test: `dotnet test`
-6. Create a free Azure DevOps organization at https://dev.azure.com (needed on Day 56).
+6. Create a free Azure DevOps organization at https://dev.azure.com (needed on Day 59).
 
 **Done when:** `dotnet test` passes `Login_WithValidCredentials_ShouldSucceed`.
 
@@ -27,13 +27,13 @@ A step-by-step tutorial. Each day teaches one concept with working code, then gi
 
 | Part | Days | Topic |
 |---|---|---|
-| [1](course/01-csharp-refresher.md) | 1–12 | C# refresher: methods, classes, interfaces, `async`/`await`, DI |
-| [2](course/02-playwright-basics.md) | 13–24 | Playwright: browsers, locators, actions, assertions |
-| [3](course/03-xunit-v3.md) | 25–34 | xUnit v3: facts, theories, lifecycle, output |
-| [4](course/04-page-object-model.md) | 35–44 | Page Object Model |
-| [5](course/05-flows-and-di.md) | 45–50 | Flows and dependency injection |
-| [6](course/06-own-tests.md) | 51–55 | Your own tests |
-| [7](course/07-azure-ci.md) | 56–60 | Azure Pipelines CI |
+| [1](course/01-csharp-refresher.md) | 1–15 | C# refresher: methods, classes, interfaces, `async`/`await`, DI |
+| [2](course/02-playwright-basics.md) | 16–27 | Playwright: browsers, locators, actions, assertions |
+| [3](course/03-xunit-v3.md) | 28–37 | xUnit v3: facts, theories, lifecycle, output |
+| [4](course/04-page-object-model.md) | 38–47 | Page Object Model |
+| [5](course/05-flows-and-di.md) | 48–53 | Flows and dependency injection |
+| [6](course/06-own-tests.md) | 54–58 | Your own tests |
+| [7](course/07-azure-ci.md) | 59–63 | Azure Pipelines CI |
 
 ## Quick Reference
 

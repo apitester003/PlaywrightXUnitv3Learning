@@ -1,4 +1,4 @@
-# 63-Day Course: C# + Playwright + xUnit v3 + Azure CI
+# 70-Day Course: C# + Playwright + xUnit v3 + Azure CI
 
 A step-by-step tutorial. Each day teaches one concept with working code, then gives an exercise. Work through it in order, about 1 hour a day.
 
@@ -34,6 +34,7 @@ A step-by-step tutorial. Each day teaches one concept with working code, then gi
 | [5](course/05-flows-and-di.md) | 48–53 | Flows and dependency injection |
 | [6](course/06-own-tests.md) | 54–58 | Your own tests |
 | [7](course/07-azure-ci.md) | 59–63 | Azure Pipelines CI |
+| [8](course/08-deep-dives-and-interviews.md) | 64–70 | Deep dives (strings, LINQ, Playwright windows, iframes, shadow DOM), framework design, interview prep |
 
 ## Quick Reference
 

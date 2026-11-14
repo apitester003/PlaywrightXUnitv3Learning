@@ -17,7 +17,7 @@ namespace PlaywrightXUnitv3Learning.Core
 
         public virtual async Task GoTo(string? baseUrl = null)
         {
-            var url = baseUrl != null ? $"{baseUrl}/{PageUrl}" : PageUrl;
+            string url = baseUrl != null ? $"{baseUrl}/{PageUrl}" : PageUrl;
             await Page.GotoAsync(url);
         }
     }

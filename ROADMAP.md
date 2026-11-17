@@ -109,6 +109,7 @@ Each phase ends with a mini-project and an interview Q&A section.
 | 47 | Phase 1 mini-project: a console test-data tool |
 | 48 | Phase 1 interview Q&A and checkpoint |
 
+
 ---
 
 ## Phase 2: Playwright UI Automation (Days 49–96)

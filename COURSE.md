@@ -25,11 +25,25 @@ A step-by-step tutorial. Each day teaches one concept with working code, then gi
 
 **Done when:** `dotnet test` passes `Login_WithValidCredentials_ShouldSucceed`.
 
-## Parts
+## 52-week course: Phase 1 (Days 1–48)
+
+| Week | Days | Topic |
+|---|---|---|
+| [1](course/phase-1-csharp/week-01.md) | 1–6 | Setup and first programs |
+| [2](course/phase-1-csharp/week-02.md) | 7–12 | Control flow and methods |
+| [3](course/phase-1-csharp/week-03.md) | 13–18 | Strings, arrays, and collections |
+| [4](course/phase-1-csharp/week-04.md) | 19–24 | OOP, part 1 |
+| [5](course/phase-1-csharp/week-05.md) | 25–30 | OOP, part 2 |
+| [6](course/phase-1-csharp/week-06.md) | 31–36 | LINQ and exceptions |
+| [7](course/phase-1-csharp/week-07.md) | 37–42 | Async and file I/O |
+| [8](course/phase-1-csharp/week-08.md) | 43–48 | Tooling and Phase 1 wrap-up |
+
+## Earlier short course (being replaced phase by phase)
+
 
 | Part | Days | Topic |
 |---|---|---|
-| [1](course/01-csharp-refresher.md) | 1–15 | C# refresher: methods, classes, interfaces, `async`/`await`, DI |
+| Old part 1 | | Replaced by Phase 1 of the 52-week course (see below) |
 | [2](course/02-playwright-basics.md) | 16–27 | Playwright: browsers, locators, actions, assertions |
 | [3](course/03-xunit-v3.md) | 28–37 | xUnit v3: facts, theories, lifecycle, output |
 | [4](course/04-page-object-model.md) | 38–47 | Page Object Model |

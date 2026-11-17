@@ -245,4 +245,4 @@ Re-type the Day 19, 20, and 22 examples without looking.
 
 ---
 
-Previous: [Part 1](01-csharp-refresher.md) · Next: [Part 3: xUnit v3](03-xunit-v3.md)
+Previous: [Phase 1](phase-1-csharp/week-01.md) · Next: [Part 3: xUnit v3](03-xunit-v3.md)

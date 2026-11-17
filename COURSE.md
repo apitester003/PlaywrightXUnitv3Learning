@@ -1,3 +1,5 @@
+> **New plan:** a full 52-week course (312 days) is in [ROADMAP.md](ROADMAP.md). The files below are the earlier short version and will be replaced phase by phase.
+
 # 70-Day Course: C# + Playwright + xUnit v3 + Azure CI
 
 A step-by-step tutorial. Each day teaches one concept with working code, then gives an exercise. Work through it in order, about 1 hour a day.

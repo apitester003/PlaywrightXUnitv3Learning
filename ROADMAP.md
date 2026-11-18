@@ -242,7 +242,7 @@ Each phase ends with a mini-project and an interview Q&A section.
 | Day | Topic |
 |---|---|
 | 121 | Custom attributes and extension points |
-| 122 | Assertion libraries: FluentAssertions, Shouldly |
+| 122 | Assertion libraries: Shouldly and AwesomeAssertions (both free) |
 | 123 | xUnit analyzers |
 | 124 | Organising a larger test suite |
 | 125 | Phase 3 mini-project |
@@ -508,16 +508,16 @@ Each phase ends with a mini-project and an interview Q&A section.
 | Day | Topic |
 |---|---|
 | 271 | Create an Azure DevOps account, organization, and project |
-| 272 | Azure Repos |
+| 272 | Azure Repos and GitHub repositories |
 | 273 | Azure Pipelines concepts |
 | 274 | Your first YAML pipeline |
-| 275 | Agents |
+| 275 | Agents (Azure Pipelines) and runners (GitHub Actions) |
 | 276 | Review and practice |
 
 ### Week 47: Pipelines (Days 277–282)
 | Day | Topic |
 |---|---|
-| 277 | Triggers and pull request validation |
+| 277 | Triggers and pull request validation (Azure Pipelines and GitHub Actions) |
 | 278 | Variables and secrets |
 | 279 | Stages and jobs |
 | 280 | Caching |
@@ -527,7 +527,7 @@ Each phase ends with a mini-project and an interview Q&A section.
 ### Week 48: Running tests in the pipeline (Days 283–288)
 | Day | Topic |
 |---|---|
-| 283 | Headless runs in CI |
+| 283 | Headless runs in CI: your first GitHub Actions workflow |
 | 284 | Publishing test results |
 | 285 | Saving traces and screenshots as artifacts |
 | 286 | Browser matrix |
@@ -541,7 +541,7 @@ Each phase ends with a mini-project and an interview Q&A section.
 | 290 | Variable groups and Key Vault |
 | 291 | Gates |
 | 292 | Azure Boards and Test Plans overview |
-| 293 | Reusable pipeline templates |
+| 293 | Reusable pipeline templates and reusable GitHub Actions workflows |
 | 294 | Review and practice |
 
 ### Week 50: Scaling CI and Phase 7 wrap-up (Days 295–300)
@@ -580,6 +580,13 @@ Each phase ends with a mini-project and an interview Q&A section.
 
 ---
 
-## About the existing `course/` files
+## About the `course/` files
 
-The earlier 70-day files in `course/` stay in place. As each phase of this roadmap is written, I'll reuse and expand the matching material and replace those files. Until then, treat this roadmap as the plan and the old files as a preview.
+This roadmap is the only course. The earlier 70-day files and `COURSE.md` have been removed. Each phase is written as `course/phase-N-*/week-NN.md`, with runnable examples in `Tests/Course/WeekNN/`.
+
+Phases 1, 2 and 3 are written (weeks 1–21). Phase 3 is awaiting review. Phase 4 is next.
+
+Additions to the plan:
+- GitHub Actions is taught alongside Azure Pipelines in Phase 7 (Days 272, 275, 277, 283 and 293).
+- Only free and open-source packages are used. No paid or commercially licensed libraries.
+- Each week includes interview questions up to principal level, on-the-job scenarios, trade-offs and exercises with solutions.

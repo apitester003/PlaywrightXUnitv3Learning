@@ -1,0 +1,5 @@
+[
+  { "Username": "", "Password": "secret_sauce", "ExpectedError": "Username is required" },
+  { "Username": "standard_user", "Password": "", "ExpectedError": "Password is required" },
+  { "Username": "locked_out_user", "Password": "secret_sauce", "ExpectedError": "locked out" }
+]
